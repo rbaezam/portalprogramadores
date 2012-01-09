@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titulo: MyString
+  descripcion: MyString
+  texto: MyText
+  lenguaje: 
+  vistas: 1
+  descargas: 1
+  puntuacion: 1.5
+  usuario: 
+
+two:
+  titulo: MyString
+  descripcion: MyString
+  texto: MyText
+  lenguaje: 
+  vistas: 1
+  descargas: 1
+  puntuacion: 1.5
+  usuario: 

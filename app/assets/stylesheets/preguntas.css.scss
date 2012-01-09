@@ -1,0 +1,45 @@
+// Place all the styles related to the Preguntas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pregunta {
+	ul {
+		list-style-type: none;
+
+		li {
+			display: inline;
+		}
+	}
+}
+
+pre {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+#fs_pregunta {
+	width: 600px;
+	
+	.botones {
+		float: right;
+		margin-right: 5px;
+	}
+
+	label {
+		width: 80px;
+		display: block;
+	}
+
+	textarea {
+		width: 500px;
+		height: 300px;
+	}	
+
+}
+
+#instrucciones {
+	.seccion-instrucciones {
+		display: none;
+	}
+}

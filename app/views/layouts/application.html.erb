@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <title><%= yield :title %>Portal Programadores</title>
+  <meta name="description" content="Red social para programadores y desarrolladores de habla hispana para resolver dudas, por medio de un formato de preguntas y respuestas."
+  <meta name="keywords" content="red social desarrollo programacion tecnologia preguntas respuestas portal español lenguajes plataformas dudas">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <%= yield :head %>
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-28066925-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</head>
+<body>
+
+	<div id="pagina" class="container">
+		
+		<header id="encabezado">
+			<div class="span-12">
+				<h1>Portal</h1>
+			</div>
+			<div class="right">
+				<% if usuario_signed_in? %>
+					<%= link_to current_usuario.nombre, mostrar_usuario_path(current_usuario.id, current_usuario.nombre) %>
+					<%= link_to '(Cerrar sesión)', cerrar_sesion_path %>
+				<% else %>
+					<%= link_to 'Iniciar sesión', iniciar_sesion_path %>
+					<%= link_to 'Registrarse', registrarse_path %>
+				<% end %>
+			</div>
+		</header>
+
+		<nav>
+			<ul>
+				<li>
+					<%= link_to 'Inicio', root_path %>
+				</li>
+				<li>
+					<%= link_to 'Preguntas', preguntas_path %>
+				</li>
+				<li>
+					<%= link_to 'Códigos', codigos_path %>
+				</li>
+				<li>
+					<%= link_to 'Etiquetas', etiquetas_path %>
+				</li>
+			</ul>
+			<% if usuario_signed_in? %>
+			<ul id="registrados">
+				<li>
+					<%= link_to 'Realizar pregunta', new_pregunta_path %>
+				</li>
+				<li>
+					<%= link_to 'Subir código', new_codigo_path %>
+				</li>
+			</ul>
+			<% end %>
+		</nav>
+
+		<div id="contenido">
+			<% if not notice.blank? %>
+				<p class="notice"><%= notice %></p>
+			<% end %>
+			<% if not alert.blank? %>
+				<p class="alert"><%= alert %></p>
+			<% end %>
+			<%= yield %>
+		</div>
+
+		<footer>
+			<section class="links">
+				<ul>
+					<li>
+						<%= link_to 'Acerca de', acerca_de_path %>
+					</li>
+					<li>
+						<%= link_to 'Términos y condiciones', root_path %>
+					</li>
+					<li>
+						<%= link_to 'Aviso de privacidad', root_path %>
+					</li>
+					<li>
+						<%= link_to 'Contáctanos', root_path %>
+					</li>
+				</ul>
+			</section>
+			<section class="derechos">
+				&copy; 2012 PortalProgramadores.com. Todos los derechos reservados.
+			</section>
+		</footer>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+// Place all the styles related to the usuarios controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+article#usuario {
+
+	hr {
+		width: 99%;
+	}
+
+	dl {
+		dt {
+			float: left;
+			background-color: #569afc;
+			color: #fff;
+			font-weight: bold;
+			margin-right: 10px;
+			padding: 5px;
+			width: 150px;
+		}
+
+		dd {
+			margin: 2px 0px;
+			padding: 5px 0px;
+		}
+	}
+
+	#titulo {
+		h1 {
+			display: inline;
+		}
+	}
+
+	#reputacion {
+		h3 {
+			margin-top: 10px;
+		}
+
+		.sin_reputacion {
+			h3 {
+				display: inline;
+			}
+		}
+
+		#valor {
+			color: #e62;
+		}
+	}
+
+	#descripcion {
+		p {
+			background-color: #efefef;
+			border: 1px solid #ccc;
+			padding: 10px;
+			height: 200px;
+		}
+	}
+}
+
+#fs_usuario {
+
+	width: 600px;
+	margin: 0 auto;
+
+	.campo {
+		margin-top: 5px;
+		padding: 3px;
+	}
+
+	.botones {
+		float: right;
+	}
+
+	label {
+		width: 120px;
+		display: block;
+		float: left;
+		text-align: right;
+		clear: left;
+		margin-right: 5px;
+	}
+
+	input {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	textarea {
+		margin: 0px;
+		padding: 0px;
+	}
+}

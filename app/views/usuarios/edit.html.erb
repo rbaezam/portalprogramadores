@@ -1,0 +1,53 @@
+<h1>Editar datos</h1>
+<h2><%= @usuario.nombre %></h2>
+
+<%= form_for @usuario, {:url => usuario_path} do |f| %>
+
+	<fieldset id="fs_usuario">
+		<legend>Datos de usuario</legend>
+
+		<div class="campo">
+			<%= f.label :login %>
+			<%= f.text_field :login %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :nombre %>
+			<%= f.text_field :nombre %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :website %>
+			<%= f.text_field :website %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :fecha_nacimiento %>
+			<%= f.text_field :fecha_nacimiento %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :ubicacion %>
+			<%= f.text_field :ubicacion %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :acerca_de %>
+			<%= f.text_area :acerca_de %>
+		</div>
+
+		<div class="botones">
+			<%= f.submit 'Aceptar' %>
+			<%= link_to 'Cancelar', mostrar_usuario_path(@usuario.id, @usuario.nombre) %>
+		</div>
+
+		<div class="clear"></div>
+
+	</fieldset>
+
+<% end %>

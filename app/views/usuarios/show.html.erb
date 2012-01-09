@@ -1,0 +1,81 @@
+<article id="usuario" class="container">
+	<section id="titulo" class="span-12">
+		<h1><%= @usuario.nombre %></h1> <%= link_to '(Editar)', edit_usuario_path(@usuario.id) %>
+	</section>
+
+	<section id="reputacion" class="span-12 last">
+		<% if not @usuario.reputacion.blank? %>
+			<h3>Reputación: <span id="valor"><%= @usuario.reputacion %></span></h3>
+		<% else %>
+			<span class="sin_reputacion">
+				<h3>Sin reputación</h3> (¿Cómo gano reputación?)
+			</span>
+		<% end %>
+	</section>
+
+	<hr/>
+
+	<section id="personales" class="span-12">
+		<h3>Personales</h3>
+		<dl>
+
+			<dt>Correo</dt>
+			<dd><%= @usuario.email %></dd>
+
+			<dt>Nombre real</dt>
+			<dd><%= @usuario.nombre %></dd>
+
+			<dt>Fecha de nacimiento</dt>
+			<dd>
+				<% if not @usuario.fecha_nacimiento.blank? %>
+					<%= l @usuario.fecha_nacimiento %>
+				<% else %>
+					&nbsp;
+				<% end %>
+			</dd>
+
+			<dt>Ubicación</dt>
+			<dd>
+				<% if not @usuario.ubicacion.blank? %>
+					<%= @usuario.ubicacion %>
+				<% else %>
+					&nbsp;
+				<% end %>
+			</dd>
+
+		</dl>
+
+		<h3>Usuario</h3>
+		<dl>
+
+			<dt>Nombre de usuario</dt>
+			<dd><%= @usuario.login %></dd>
+
+			<dt>Página web</dt>
+			<dd>
+				<% if not @usuario.website.blank? %>
+					<%= @usuario.website %>
+				<% else %>
+					&nbsp;
+				<% end %>
+			</dd>
+
+			<dt>Usuario desde</dt>
+			<dd><%= @usuario.mostrar_fecha %></dd>
+
+		</dl>
+	</section>
+
+	<section id="descripcion" class="span-11 last">
+		<h3>Perfil</h3>
+		<p>
+			<% if @usuario.acerca_de.blank? %>
+				No ha capturado su perfil.
+			<% else %>
+				<%= @usuario.acerca_de %>
+			<% end %>
+		</p>
+	</section>
+
+	<div class="clear"></div>
+</article>

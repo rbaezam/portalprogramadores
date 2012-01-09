@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titulo: MyString
+  texto: MyText
+  usuario: 
+  votos: 1
+  fecha_publicacion: 2011-12-20
+  vistas: 1
+  es_respuesta: false
+  activo: false
+
+two:
+  titulo: MyString
+  texto: MyText
+  usuario: 
+  votos: 1
+  fecha_publicacion: 2011-12-20
+  vistas: 1
+  es_respuesta: false
+  activo: false

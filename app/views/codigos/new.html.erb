@@ -1,0 +1,49 @@
+<h2>Subir código</h2>
+
+<section class="enlaces">
+	<%= link_to 'Regresar al listado', codigos_path %>
+</section>
+
+<%= form_for @codigo, {:url => codigos_path} do |f| %>
+
+	<input type="hidden" id="ruta_autocompletar" value="<%= url_for(:action => 'obtener_por_nombre', :controller => 'etiquetas') %>"/>
+
+	<%= f.error_messages %>
+
+	<fieldset id="fs_codigo">
+		<legend>Datos del código a subir</legend>
+
+		<div class="campo">
+			<%= f.label :titulo %>
+			<%= f.text_field :titulo %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :descripcion %>
+			<%= f.text_field :descripcion %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :lenguaje_id %>
+			<%= f.collection_select :lenguaje_id, @lenguajes, :id, :nombre, {:include_blank => '-Seleccione un lenguaje-'} %>
+		</div>
+
+		<div class="campo">
+			<label for="etiquetas">Etiquetas:</label>
+			<input type="text" id="etiquetas" name="etiquetas"/>
+			<span id="lista_etiquetas"></span>
+			<input type="hidden" id="lista_etiquetas_valor" name="lista_etiquetas_valor" value=""/>
+		</div>
+
+		<div class="campo">
+			<%= f.label :texto %>
+			<%= f.text_area :texto, :cols => 80, :rows => 10, :class => 'codigo_texto' %>
+		</div>
+
+		<div class="botones">
+			<%= f.submit "Publicar" %>
+		</div>
+
+	</fieldset>
+
+<% end %>

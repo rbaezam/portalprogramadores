@@ -1,0 +1,21 @@
+// Place all the styles related to the codigos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.codigo {
+	ul {
+		list-style-type: none;
+
+		li {
+			display: inline;
+		}
+	}
+}
+
+#fs_codigo {
+
+	textarea {
+		width: 500px;
+		height: 400px;
+	}
+}

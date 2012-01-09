@@ -1,0 +1,163 @@
+<%= content_for :head do %>
+
+	<meta name="description" content="<%= @pregunta.texto %>" />
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+        type="text/javascript">
+</script>
+
+<% end %>
+
+<%= content_for :title do %>
+	<%= @pregunta.titulo %> -
+<% end %>
+
+<div class="span-19">
+	<article class="pregunta">
+		
+		<header>
+			<h2><%= @pregunta.titulo %></h2>
+		</header>
+
+		<section class="texto">
+			<p>
+				<%= raw @pregunta.texto %>
+			</p>		
+		</section>
+
+		<section class="etiquetas">
+			<ul>
+			  <% @pregunta.etiquetas.each do |etiqueta| %>
+			  <li>
+					<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
+			  </li>
+			  <% end %>
+			</ul>
+		</section>
+
+		<section class="datos">
+			<ul>
+				<li>
+					Preguntado por: <%= @pregunta.usuario.login unless @pregunta.usuario.nil? %>
+				</li>
+				<li>
+					<%= @pregunta.mostrar_fecha %>
+				</li>
+			</ul>
+		</section>
+
+		<section class="estadisticas">
+			<ul>
+				<li>
+					Vistas: <%= @pregunta.vistas %>
+				</li>
+				<li>
+					Votos: <span id="votos"><%= @pregunta.votos %></span>
+				</li>
+			</ul>
+		</section>
+
+		<section class="acciones">
+			<ul>
+				<li>
+					<a href="#" id="lnkResponder">Responder</a>
+				</li>
+				<li>
+					<a href="#" id="lnkGusta">Me gusta</a>
+				</li>
+				<li>
+					<a href="#" id="lnkNoGusta">No me gusta</a>
+				</li>
+				<li>
+					<a name="fb_share" type="icon_link">Compartir</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-lang="es" data-count="none" data-url="<%= request.url %>">Twittear</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</li>
+			</ul>
+		</section>
+
+		<section class="dialogoResponder">
+			<form id="frmResponder">
+				<input type="hidden" id="idPregunta" name="idPregunta" value="<%= @pregunta.id %>"/>
+				<div>
+					<label for="respuesta">Respuesta:</label>
+					<textarea id="respuesta" name="respuesta" class="markitup" cols="20" rows="5"></textarea>
+				</div>
+				<div>
+					<input type="submit" value="Responder" />
+					<input type="button" value="Cancelar" id="btnCancelar"/>
+				</div>
+			</form>
+		</section>
+
+		<section class="span-24">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-5471977035368249";
+			/* portalprogramadores */
+			google_ad_slot = "2297191548";
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>			
+		</section>
+
+		<section class="respuestas">
+			<h3><%= @pregunta.respuestas.count %> respuesta(s) </h3>
+			<ul>
+			  <% @pregunta.respuestas.each do |respuesta| %>
+
+			  	<li>
+			  		<%= respuesta.texto %>
+			  	</li>
+
+			  <% end %>
+			</ul>
+		</section>
+
+	</article>
+	
+</div>
+
+<div class="span-5 last">
+	<section id="etiquetas_usadas">
+		<h3>Etiquetas</h3>
+		<ul>
+		  <% @pregunta.etiquetas.each do |etiqueta| %>
+		  <li>
+		  	<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
+		  </li>
+		  <% end %>
+		</ul>
+	</section>
+
+	<section id="preguntas_relacionadas">
+		<h3>Relacionadas</h3>
+		<ul>
+			<% @relacionadas.each do |relacionada| %>
+			<li>
+				<%= link_to relacionada.titulo, 
+						mostrar_pregunta_path(relacionada.id, relacionada.slug) %>
+			</li>
+			<% end %>
+		</ul>
+	</section>
+</div>
+
+<div class="clear">
+</div>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	$.ajax({
+		url: "incrementar_vistas", 
+		type: 'post',
+		data: {id:<%= @pregunta.id %>}
+	});
+}
+
+</script>

@@ -1,0 +1,83 @@
+<h1>Publicar pregunta</h1>
+
+<section id="formulario" class="span-18">
+	<section class="enlaces">
+		<%= link_to 'Regresar al listado', preguntas_path %>
+	</section>
+
+	<%= form_for @pregunta, {:url => preguntas_path} do |f| %>
+
+	<input type="hidden" id="ruta_autocompletar" value="<%= url_for(:action => 'obtener_por_nombre', :controller => 'etiquetas') %>"/>
+
+	<%= f.error_messages %>
+
+	<fieldset id="fs_pregunta">
+		<legend>Escriba su pregunta</legend>
+
+		<div class="campo">
+			<%= f.label :titulo %>
+			<%= f.text_field :titulo, :size => 80 %>
+		</div>
+
+		<div class="campo">
+			<%= f.label :texto %>
+			<%= f.text_area :texto, :cols => 40, :rows => 5, :class => 'markitup' %>
+		</div>
+
+		<div class="campo">
+			<label for="etiquetas">Etiquetas:</label>
+			<input type="text" id="etiquetas" name="etiquetas"/>
+			<span id="lista_etiquetas"></span>
+			<input type="hidden" id="lista_etiquetas_valor" name="lista_etiquetas_valor" value=""/>
+		</div>
+
+		<div class="botones">
+			<%= f.submit "Publicar" %>
+			<%= link_to 'Cancelar', preguntas_path %>
+		</div>
+
+	</fieldset>
+
+	<% end %>
+</section>
+
+<section id="instrucciones" class="span-5 last">
+	<section id="instrucciones_titulo" class="seccion-instrucciones">
+		<h3>¿Cómo preguntar?</h3>
+		<p>
+			Escribe ún título para tu pregunta que sea claro y fácil de comprender para que recibas una buena respuesta.
+		</p>
+	</section>
+
+	<section id="instrucciones_formato" class="seccion-instrucciones">
+		<h3>¿Cómo redactar la pregunta?</h3>
+		<p>
+			Utiliza las siguientes reglas de formato:
+		</p>
+		<ul>
+			<li>Utiliza saltos de línea para separar párrafos.</li>
+			<li>Para saltos de línea usa dos espacios al final.</li>
+			<li>Utiliza **negrita** o _itálica_</li>
+			<li>Para escribir bloques de código usa 4 espacios al principio de la línea.</li>
+			<li>Cita comentarios con > al principio de la línea.</li>
+			<li></li>
+		</ul>
+	</section>
+
+	<section id="instrucciones_etiquetas" class="seccion-instrucciones">
+		<h3>¿Cómo etiquetar?</h3>
+		<p>
+			Etiqueta tus preguntas para categorizarlas con otras similares. Te damos las siguientes sugerencias:
+		</p>
+		<ul>
+			<li>De preferencia utiliza etiquetas existentes.</li>
+			<li>Usa abreviaturas comunes.</li>
+			<li>Separa múltiples palablas con guiones (por ejemplo, asp.net-mvc)</li>
+			<li>Se permite un máximo de 5 etiquetas por pregunta.</li>
+			<li>Utiliza espacio o coma para separar las etiquetas.</li>
+		</ul>
+	</section>
+
+</section>
+
+<div class="clear"></div>

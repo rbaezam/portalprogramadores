@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kreon Regular'), local('Kreon-Regular'), url('http://themes.googleusercontent.com/static/fonts/kreon/v5/a5r0-iMPk2rygJI75EuckA.woff') format('woff');
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Kreon';
+	color: #338;
+}
+
+#pagina {
+}
+
+#contenido {
+	padding: 0px;
+}
+
+header#encabezado {
+	background: image-url("top-blue-bg.png");
+	height: 140px;
+	padding: 5px;
+	border-left: 1px solid #ccf;
+	border-right: 1px solid #ccf;
+}
+
+nav {
+
+	margin-top: -35px;
+	font-size: 1.4em;
+	height: 35px;
+
+	ul {
+		list-style-type: none;
+		display: inline;
+
+		&#registrados {
+			/*margin-left: 100px;*/
+			float: right;
+		}
+	}
+
+	li {
+		display: inline;
+
+		a {
+			padding: 5px 10px;
+
+			&:hover {
+				background-color: #f64;
+				color: #fff;
+				border: 1px solid #f64;
+				border-radius: 5px;
+			}
+		}
+	}
+}
+
+footer {
+	padding: 5px;
+	/*background-color: #888;*/
+	text-align: center;
+	height: 270px;
+	border-top: 1px solid #ccc;
+
+	.links {
+		ul {
+			margin-bottom: 0px;
+			list-style-type: none;
+
+			li {
+				display: inline;
+				margin-right: 5px;
+				padding-right: 5px;
+				border-right: 1px solid #fff;
+			}
+		}
+	}
+
+	.derechos {
+		color: #888;
+	}
+}
+
+.field_with_errors {
+	color: #f00;
+}
+
+#errorExplanation {
+	border: 1px solid #f00;
+	padding: 5px 10px;
+	margin: 10px 0;
+
+	h2 {
+		color: #c00;
+		font-weight: bold;
+	}
+
+	p {
+		color: #900;
+	}
+
+	ul {
+		li {
+			color: #c00;
+		}
+	}
+}

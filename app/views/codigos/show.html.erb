@@ -1,0 +1,81 @@
+<%= content_for :head do %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		prettyPrint();
+	});
+</script>
+
+<% end %>
+
+<div class="span-18">
+	<article class="codigo">
+		
+		<header>
+			<h2><%= @codigo.titulo %></h2>
+		</header>
+
+		<section class="descripcion">
+			<p>
+				<%= @codigo.descripcion %>
+			</p>
+		</section>
+
+		<section class="texto">
+			<pre class="prettyprint"><%= raw @codigo.texto %></pre>
+		</section>
+
+		<section class="etiquetas">
+			<ul>
+			  <% @codigo.etiquetas.each do |etiqueta| %>
+			  <li>
+					<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
+			  </li>
+			  <% end %>
+			</ul>
+		</section>
+
+		<section class="datos">
+			<ul>
+				<li>
+					Subido por: <%= @codigo.usuario.login unless @codigo.usuario.nil? %>
+				</li>
+				<li>
+					<%= @codigo.mostrar_fecha %>
+				</li>
+			</ul>
+		</section>
+
+		<section class="estadisticas">
+			<ul>
+				<li>
+					Vistas: <%= @codigo.vistas %>
+				</li>
+				<li>
+					Descargas: <%= @codigo.descargas %>
+				</li>
+				<li>
+					Votos: <%= @codigo.votos %>
+				</li>
+			</ul>
+		</section>
+
+	</article>
+	
+</div>
+
+<div class="span-6 last">
+	<section id="etiquetas_usadas">
+		<h3>Etiquetas</h3>
+		<ul>
+		  <% @codigo.etiquetas.each do |etiqueta| %>
+		  <li>
+		  	<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
+		  </li>
+		  <% end %>
+		</ul>
+	</section>
+</div>
+
+<div class="clear">
+</div>

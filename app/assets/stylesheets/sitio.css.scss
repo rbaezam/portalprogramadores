@@ -1,0 +1,42 @@
+// Place all the styles related to the Sitio controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#preguntas {
+
+	.pregunta {
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;
+
+	}
+
+	ul {
+		list-style-type: none;
+		margin-left: -15px;
+
+		li {
+			display: inline;
+			margin-right: 20px;
+		}
+	}
+}
+
+#codigos {
+	.codigo {
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;
+
+	}
+
+	ul {
+		list-style-type: none;
+		margin-left: -15px;
+
+		li {
+			display: inline;
+			margin-right: 20px;
+		}
+	}	
+}

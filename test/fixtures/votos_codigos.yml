@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario: 
+  codigo: 
+  voto: 1
+
+two:
+  usuario: 
+  codigo: 
+  voto: 1
