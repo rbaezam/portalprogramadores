@@ -23,8 +23,8 @@ class Pregunta < ActiveRecord::Base
     return obtener_mostrar_fecha(fecha_publicacion)
   end
 
-  def obtener_relacionadas
-    Pregunta.all
+  def obtener_relacionadas(cantidad=10)
+    Pregunta.where(:es_respuesta => false).order("fecha_publicacion desc").limit(cantidad)
   end
 
   before_create do |pregunta|

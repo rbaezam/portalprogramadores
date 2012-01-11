@@ -1,9 +1,9 @@
 <%= content_for :head do %>
 
 	<meta name="description" content="<%= @pregunta.texto %>" />
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+<!--script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
         type="text/javascript">
-</script>
+</script-->
 
 <% end %>
 
@@ -25,7 +25,7 @@
 		<section class="datos">
 			<ul>
 				<li>
-					Preguntado por: <%= @pregunta.usuario.login unless @pregunta.usuario.nil? %>
+					Preguntado por: <%= link_to @pregunta.usuario.login, mostrar_usuario_path(@pregunta.usuario.id, @pregunta.usuario.login) unless @pregunta.usuario.nil? %>
 				</li>
 				<li>
 					<%= @pregunta.mostrar_fecha %>
@@ -40,6 +40,8 @@
 				</li>
 				<li>
 					Votos: <span id="votos"><%= @pregunta.votos %></span>
+					<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
+					<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
 				</li>
 			</ul>
 		</section>
@@ -57,12 +59,6 @@
 		<section id="acciones">
 			<ul>
 				<li>
-					<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
-				</li>
-				<li>
-					<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
-				</li>
-				<li>
 					<a name="fb_share" type="icon_link">Compartir</a>
 				</li>
 				<li>
@@ -72,6 +68,7 @@
 			</ul>
 		</section>
 
+		<% if not @mostrar_anuncios.blank? %>
 		<section class="span-24">
 			<script type="text/javascript"><!--
 			google_ad_client = "ca-pub-5471977035368249";
@@ -85,6 +82,7 @@
 			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			</script>			
 		</section>
+		<% end %>
 
 		<section id="respuestas" class="span-19">
 			<h3><%= @pregunta.respuestas.count %> respuesta(s) </h3>
@@ -93,9 +91,27 @@
 			  <% @pregunta.respuestas.each do |respuesta| %>
 
 			  	<li>
-			  		<p>
-				  		<%= respuesta.texto %>
-			  		</p>
+			  		<article class="respuesta">
+			  			<section class="texto">
+					  		<p>
+						  		<%= respuesta.texto %>
+					  		</p>
+			  			</section>
+			  			<section class="datos">
+  							<ul>
+									<li>
+										Respondido por: <%= link_to respuesta.pregunta.usuario.login, mostrar_usuario_path(respuesta.pregunta.usuario.id, respuesta.pregunta.usuario.login) unless respuesta.pregunta.usuario.nil? %>
+									</li>
+									<li>
+										<%= respuesta.mostrar_fecha %>
+									</li>
+									<li>
+										Votos: <%= respuesta.votos %>
+									</li>
+								</ul>
+
+			  			</section>
+			  		</article>
 			  		<hr/>
 			  	</li>
 

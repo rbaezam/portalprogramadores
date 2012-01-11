@@ -4,7 +4,8 @@ module LibFechas
     diferencia = Time.now - fecha
 
     if diferencia > 86400
-      return I18n.l fecha.to_date
+      cadena = I18n.l fecha.to_date
+      return "el #{cadena}"
     else
 
       horas = 0

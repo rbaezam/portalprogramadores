@@ -1,5 +1,5 @@
 class PreguntasController < ApplicationController
-  before_filter :authenticate_usuario!, :except => [:index, :show]
+  before_filter :authenticate_usuario!, :except => [:index, :show, :incrementar_vistas]
 
   def index
     @preguntas = Pregunta.obtener_recientes
