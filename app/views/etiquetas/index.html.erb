@@ -1,2 +1,16 @@
-<h1>Etiquetas#index</h1>
-<p>Find me in app/views/etiquetas/index.html.erb</p>
+<section class="container">
+	<h1>Etiquetas</h1>
+
+	<section class="span-18">
+		<ul class="lista_etiquetas">
+			<% @etiquetas.each do |etiqueta| %>
+			<li>
+				<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug), {:class => 'etiqueta'} %>
+			</li>
+			<% end %>
+		</ul>
+	</section>
+	
+</section>
+
+<div class="clear"></div>

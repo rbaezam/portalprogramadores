@@ -19,11 +19,6 @@ $ ->
 		$(".seccion-instrucciones").hide()
 		$("#instrucciones_etiquetas").show(efectoMostrarInstrucciones, null, velocidadMostrarInstrucciones)
 
-	$(".dialogoResponder").dialog
-		autoOpen: false,
-		title: "Escriba su respuesta",
-		width: 450
-
 	$(".markitup").markItUp(mySettings)
 
 	$("#etiquetas").autocomplete
@@ -47,12 +42,6 @@ $ ->
 		$(nombreSpan).remove()
 		return false
 
-	dlgResponder= () ->
-		$(".dialogoResponder").dialog('open')
-
-	$('#lnkResponder').click ->
-		dlgResponder()
-
 	$('#lnkGusta').click ->
 		idPregunta = $("#idPregunta").val()
 		$.ajax 'dar_voto',
@@ -71,13 +60,17 @@ $ ->
 				$('#votos').html(datos)
 		return false
 
-	$("#frmResponder").submit ->
-		$(".dialogoResponder").dialog('close')
-
+	$("#submit").click ->
 		respuesta = $("#respuesta").val()
 		idPregunta = $("#idPregunta").val()
-		$.post('guardar_respuesta', {texto:respuesta, idPregunta:idPregunta})
-
+		$.ajax 'guardar_respuesta', 
+			type: 'post',
+			data: {texto:respuesta, idPregunta:idPregunta},
+			success: (datos) ->
+				alert('hola')
+				return false
+				#$("#lista_respuestas").append('<li><p>' + datos + '</p></li>')
+		$("#respuesta").val('')
 		return false
 
 	$("#btnCancelar").click ->

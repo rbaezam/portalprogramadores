@@ -11,6 +11,14 @@ class Pregunta < ActiveRecord::Base
     where(:es_respuesta => false).order("fecha_publicacion desc").limit(cantidad)
   end
 
+  def self.obtener_preguntas_usuario(usuario, cantidad=10)
+    where(:usuario_id => usuario.id).where(:es_respuesta => false).order("fecha_publicacion desc").limit(cantidad)
+  end
+
+  def self.obtener_respuestas_usuario(usuario, cantidad=10)
+    where(:usuario_id => usuario.id).where(:es_respuesta => true).order("fecha_publicacion desc").limit(cantidad)
+  end
+
   def mostrar_fecha
     return obtener_mostrar_fecha(fecha_publicacion)
   end

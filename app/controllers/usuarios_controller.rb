@@ -5,7 +5,11 @@ class UsuariosController < ApplicationController
   end
 
   def show
-    @usuario = current_usuario
+    @usuario = Usuario.find(params[:id])
+    @puede_editar_usuario = (@usuario.id == current_usuario.id)
+
+    @preguntas = Pregunta.obtener_preguntas_usuario(@usuario)
+    @respuestas = Pregunta.obtener_respuestas_usuario(@usuario)
   end
 
   def new

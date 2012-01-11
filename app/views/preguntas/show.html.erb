@@ -12,26 +12,14 @@
 <% end %>
 
 <div class="span-19">
-	<article class="pregunta">
+	<article id="pregunta">
 		
 		<header>
 			<h2><%= @pregunta.titulo %></h2>
 		</header>
 
 		<section class="texto">
-			<p>
 				<%= raw @pregunta.texto %>
-			</p>		
-		</section>
-
-		<section class="etiquetas">
-			<ul>
-			  <% @pregunta.etiquetas.each do |etiqueta| %>
-			  <li>
-					<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
-			  </li>
-			  <% end %>
-			</ul>
 		</section>
 
 		<section class="datos">
@@ -56,16 +44,23 @@
 			</ul>
 		</section>
 
-		<section class="acciones">
+		<section class="etiquetas">
+			<ul class="lista_etiquetas">
+			  <% @pregunta.etiquetas.each do |etiqueta| %>
+			  <li>
+					<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>
+			  </li>
+			  <% end %>
+			</ul>
+		</section>
+
+		<section id="acciones">
 			<ul>
 				<li>
-					<a href="#" id="lnkResponder">Responder</a>
+					<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
 				</li>
 				<li>
-					<a href="#" id="lnkGusta">Me gusta</a>
-				</li>
-				<li>
-					<a href="#" id="lnkNoGusta">No me gusta</a>
+					<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
 				</li>
 				<li>
 					<a name="fb_share" type="icon_link">Compartir</a>
@@ -75,20 +70,6 @@
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</li>
 			</ul>
-		</section>
-
-		<section class="dialogoResponder">
-			<form id="frmResponder">
-				<input type="hidden" id="idPregunta" name="idPregunta" value="<%= @pregunta.id %>"/>
-				<div>
-					<label for="respuesta">Respuesta:</label>
-					<textarea id="respuesta" name="respuesta" class="markitup" cols="20" rows="5"></textarea>
-				</div>
-				<div>
-					<input type="submit" value="Responder" />
-					<input type="button" value="Cancelar" id="btnCancelar"/>
-				</div>
-			</form>
 		</section>
 
 		<section class="span-24">
@@ -105,17 +86,34 @@
 			</script>			
 		</section>
 
-		<section class="respuestas">
+		<section id="respuestas" class="span-19">
 			<h3><%= @pregunta.respuestas.count %> respuesta(s) </h3>
-			<ul>
+			<hr/>
+			<ul id="lista_respuestas">
 			  <% @pregunta.respuestas.each do |respuesta| %>
 
 			  	<li>
-			  		<%= respuesta.texto %>
+			  		<p>
+				  		<%= respuesta.texto %>
+			  		</p>
+			  		<hr/>
 			  	</li>
 
 			  <% end %>
 			</ul>
+		</section>
+
+		<section id="responder" class="span-19">
+			<form id="frmResponder">
+				<input type="hidden" id="idPregunta" name="idPregunta" value="<%= @pregunta.id %>"/>
+				<div>
+					<label for="respuesta">Respuesta:</label>
+					<textarea id="respuesta" name="respuesta" class="markitup" cols="20" rows="5"></textarea>
+				</div>
+				<div>
+					<input type="submit" id="submit" value="Responder" />
+				</div>
+			</form>
 		</section>
 
 	</article>
@@ -125,7 +123,7 @@
 <div class="span-5 last">
 	<section id="etiquetas_usadas">
 		<h3>Etiquetas</h3>
-		<ul>
+		<ul class="lista_etiquetas">
 		  <% @pregunta.etiquetas.each do |etiqueta| %>
 		  <li>
 		  	<%= link_to etiqueta.nombre, mostrar_etiqueta_path(etiqueta.id, etiqueta.slug) %>

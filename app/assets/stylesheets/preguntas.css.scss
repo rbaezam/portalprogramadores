@@ -2,13 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.pregunta {
+#pregunta {
 	ul {
 		list-style-type: none;
 
 		li {
 			display: inline;
 		}
+	}
+
+	#acciones {
+		margin-top: 10px;
+		border: 1px solid #ccc;
+		background-color: #eee;
+		margin-bottom: 10px;
+	}
+
+	#respuestas {
+		margin-top: 10px;
 	}
 }
 

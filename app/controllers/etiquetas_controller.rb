@@ -1,5 +1,6 @@
 class EtiquetasController < ApplicationController
   def index
+    @etiquetas = Etiqueta.obtener_destacadas
   end
 
   def show

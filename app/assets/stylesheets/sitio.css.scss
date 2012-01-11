@@ -4,20 +4,19 @@
 
 #preguntas {
 
-	.pregunta {
-		margin-bottom: 10px;
-		padding-bottom: 10px;
-		border-bottom: 1px solid #ddd;
-
-	}
-
 	ul {
 		list-style-type: none;
 		margin-left: -15px;
 
 		li {
 			display: inline;
-			margin-right: 20px;
+			margin-right: 10px;
+
+			.pregunta {
+				margin-bottom: 10px;
+				padding-bottom: 15px;
+				border-bottom: 1px solid #ddd;
+			}
 		}
 	}
 }

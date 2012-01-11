@@ -1,6 +1,6 @@
 <article id="usuario" class="container">
 	<section id="titulo" class="span-12">
-		<h1><%= @usuario.nombre %></h1> <%= link_to '(Editar)', edit_usuario_path(@usuario.id) %>
+		<h1><%= @usuario.nombre %></h1> <%= link_to '(Editar mi cuenta)', edit_usuario_path(@usuario.id) unless @puede_editar_usuario == false %>
 	</section>
 
 	<section id="reputacion" class="span-12 last">
@@ -75,6 +75,30 @@
 				<%= @usuario.acerca_de %>
 			<% end %>
 		</p>
+	</section>
+
+	<hr/>
+
+	<section id="preguntas" class="span-12">
+		<h3>Preguntas</h3>
+		<ul>
+			<% @preguntas.each do |pregunta| %>
+			<li>
+				<%= link_to pregunta.titulo, mostrar_pregunta_path(pregunta.id, pregunta.slug) %>
+			</li>
+			<% end %>
+		</ul>
+	</section>
+
+	<section id="respuestas" class="span-12 last">
+		<h3>Respuestas</h3>
+		<ul>
+			<% @respuestas.each do |respuesta| %>
+			<li>
+				<%= link_to respuesta.pregunta.titulo, mostrar_pregunta_path(respuesta.pregunta.id, respuesta.pregunta.slug) %>
+			</li>
+			<% end %>
+		</ul>
 	</section>
 
 	<div class="clear"></div>

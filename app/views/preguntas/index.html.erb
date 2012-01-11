@@ -3,44 +3,47 @@
 		<h1>Preguntas</h1>
 		<ul>
 			<% @preguntas.each do |pregunta| %>
-			<li class="pregunta">
-				<section class="titulo">
-					<h3>
-						<%= link_to pregunta.titulo, mostrar_pregunta_path(pregunta.id, pregunta.slug) %>
-					</h3>
-				</section>
-				<section class="datos">
-					<ul>
-						<li>
-							Preguntado por: <%= pregunta.usuario.login unless pregunta.usuario.nil? %>
-						</li>
-						<li>
-							<%= pregunta.mostrar_fecha %>
-						</li>
-					</ul>
-				</section>
-				<section class="estadisticas">
-					<ul>
-						<li>
-							Vistas: <%= pregunta.vistas %>
-						</li>
-						<li>
-							Votos: <%= pregunta.votos %>
-						</li>
-						<li>
-							Respuestas: <%= pregunta.respuestas.count %>
-						</li>
-					</ul>
-				</section>
-				<section class="etiquetas">
-					<ul>
-						<% pregunta.etiquetas.each do |etiqueta| %>
-						<li>
-							<%= link_to etiqueta.nombre, mostrar_por_etiqueta_preguntas_path(etiqueta.id, etiqueta.slug) %>
-						</li>
-						<% end %>
-					</ul>
-				</section>
+			<li>
+				<article class="pregunta">
+					<section class="titulo">
+						<h3>
+							<%= link_to pregunta.titulo, mostrar_pregunta_path(pregunta.id, pregunta.slug) %>
+						</h3>
+					</section>
+					<section class="datos">
+						<ul>
+							<li>
+								Preguntado por: <%= pregunta.usuario.login unless pregunta.usuario.nil? %>
+							</li>
+							<li>
+								<%= pregunta.mostrar_fecha %>
+							</li>
+						</ul>
+					</section>
+					<section class="estadisticas">
+						<ul>
+							<li>
+								Vistas: <%= pregunta.vistas %>
+							</li>
+							<li>
+								Votos: <%= pregunta.votos %>
+							</li>
+							<li>
+								Respuestas: <%= pregunta.respuestas.count %>
+							</li>
+						</ul>
+					</section>
+					<section class="etiquetas">
+						<ul class="lista_etiquetas">
+							<% pregunta.etiquetas.each do |etiqueta| %>
+							<li>
+								<%= link_to etiqueta.nombre, mostrar_por_etiqueta_preguntas_path(etiqueta.id, etiqueta.slug) %>
+							</li>
+							<% end %>
+						</ul>
+					</section>
+					
+				</article>
 			</li>
 			<% end %>
 		</ul>

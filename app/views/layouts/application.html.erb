@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <title><%= yield :title %>Portal Programadores</title>
-  <meta name="description" content="Red social para programadores y desarrolladores de habla hispana para resolver dudas, por medio de un formato de preguntas y respuestas."
+  <meta name="description" content="Red social para programadores y desarrolladores de habla hispana para resolver dudas, por medio de un formato de preguntas y respuestas.">
   <meta name="keywords" content="red social desarrollo programacion tecnologia preguntas respuestas portal español lenguajes plataformas dudas">
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -35,7 +35,7 @@
 			</div>
 			<div class="right">
 				<% if usuario_signed_in? %>
-					<%= link_to current_usuario.nombre, mostrar_usuario_path(current_usuario.id, current_usuario.nombre) %>
+					<%= link_to current_usuario.nombre, mostrar_usuario_path(current_usuario.id, current_usuario.login) %>
 					<%= link_to '(Cerrar sesión)', cerrar_sesion_path %>
 				<% else %>
 					<%= link_to 'Iniciar sesión', iniciar_sesion_path %>

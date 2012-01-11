@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #contenido {
-	padding: 0px;
+	padding: 10px 0;
 }
 
 header#encabezado {
@@ -104,6 +104,25 @@ footer {
 	ul {
 		li {
 			color: #c00;
+		}
+	}
+}
+
+ul.lista_etiquetas {
+	margin: 5px 0 0 0;
+	li {
+		a {
+			background-color: #9bf;
+			color: #003;
+			padding: 5px;
+			margin: 3px 0;
+			text-decoration: none;
+			border: 1px solid #006;
+
+			&:hover {
+				background-color: #369;
+				color: #fff;
+			}
 		}
 	}
 }

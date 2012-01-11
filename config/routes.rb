@@ -34,7 +34,7 @@ Portalprogramadores::Application.routes.draw do
   match 'etiquetas/:id/:slug' => 'etiquetas#show', :as => 'mostrar_etiqueta'
 
   resources :usuarios
-  match 'usuarios/:id/:nombre' => 'usuarios#show', :as => 'mostrar_usuario'
+  match 'usuarios/:id/:login' => 'usuarios#show', :as => 'mostrar_usuario'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

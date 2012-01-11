@@ -57,11 +57,9 @@ class PreguntasController < ApplicationController
 
     pregunta = Pregunta.find(id)
 
-    @respuesta = Pregunta.new(:texto => texto, :pregunta => pregunta, :es_respuesta => true)
-    if @respuesta.save
-      redirect_to root_path
-    else
-    end
+    @respuesta = Pregunta.new(:texto => texto, :pregunta => pregunta, :es_respuesta => true, :usuario => current_usuario)
+    @respuesta.save
+    render :json => @respuesta.texto
   end
 
   def dar_voto
