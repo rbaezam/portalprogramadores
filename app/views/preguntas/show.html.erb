@@ -40,8 +40,15 @@
 				</li>
 				<li>
 					Votos: <span id="votos"><%= @pregunta.votos %></span>
-					<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
-					<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
+					<% if not current_usuario.nil? %>
+						<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
+						<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
+					<% else %>
+						<em>
+							(Para votar debe <%= link_to 'registrarse', registrarse_path %> o 
+							<%= link_to 'iniciar sesión', iniciar_sesion_path %>)
+						</em>
+					<% end %>
 				</li>
 			</ul>
 		</section>
@@ -107,12 +114,20 @@
 									</li>
 									<li>
 										Votos: <%= respuesta.votos %>
+										<% if not current_usuario.nil? %>
+											<a href="#" id="lnkGusta"><%= image_tag 'me_gusta.png', :title => 'Me gusta!' %></a>
+											<a href="#" id="lnkNoGusta"><%= image_tag 'no_gusta.png', :title => 'No me gusta!' %></a>
+										<% else %>
+											<em>
+												(Para votar debe <%= link_to 'registrarse', registrarse_path %> o 
+												<%= link_to 'iniciar sesión', iniciar_sesion_path %>)
+											</em>
+										<% end %>
 									</li>
 								</ul>
 
 			  			</section>
 			  		</article>
-			  		<hr/>
 			  	</li>
 
 			  <% end %>
@@ -120,6 +135,7 @@
 		</section>
 
 		<section id="responder" class="span-19">
+			<h3>Responder:</h3>
 			<form id="frmResponder">
 				<input type="hidden" id="idPregunta" name="idPregunta" value="<%= @pregunta.id %>"/>
 				<div>
