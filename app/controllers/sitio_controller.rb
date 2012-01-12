@@ -7,4 +7,7 @@ class SitioController < ApplicationController
 
   def acerca_de
   end
+
+  def terminos_servicio
+  end
 end

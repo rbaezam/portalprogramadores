@@ -3,6 +3,7 @@ Portalprogramadores::Application.routes.draw do
   root :to => "sitio#index"
 
   match 'acerca_de' => 'sitio#acerca_de', :as => 'acerca_de'
+  match 'terminos_condiciones' => 'sitio#terminos_condiciones', :as => 'terminos_condiciones'
 
   devise_for :usuarios do
     get "/iniciar_sesion", :to => "devise/sessions#new"
